@@ -15,6 +15,10 @@
  */
 package com.example.snipnote2;
 
+import java.io.File;
+
+import android.util.Log;
+
 import com.musicg.wave.Wave;
 import com.musicg.wave.WaveFileManager;
 
@@ -23,7 +27,8 @@ public class WaveDemo {
 	public static void main(String[] args) {
 
 		String filename = "assets/cock_a_1.wav";
-		String outFolder="out";
+		String outFolder="storage/emulated/0/out";
+		//File file = new File(getApplication().getFilesDir(), filename);
 
 		// create a wave object
 		Wave wave = new Wave(filename);
@@ -38,5 +43,6 @@ public class WaveDemo {
 		// save the trimmed wav
 		WaveFileManager waveFileManager=new WaveFileManager(wave);
 		waveFileManager.saveWaveAsFile(outFolder+"/out.wav");
+		Log.i("SnipNote", "File created");
 	}
 }
