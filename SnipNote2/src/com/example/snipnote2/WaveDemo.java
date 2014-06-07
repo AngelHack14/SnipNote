@@ -24,7 +24,7 @@ import com.musicg.wave.WaveFileManager;
 
 public class WaveDemo {
 
-	public static void main(String[] args) {
+	public static void demo() {
 
 		String filename = "assets/cock_a_1.wav";
 		String outFolder="storage/emulated/0/out";
@@ -43,6 +43,6 @@ public class WaveDemo {
 		// save the trimmed wav
 		WaveFileManager waveFileManager=new WaveFileManager(wave);
 		waveFileManager.saveWaveAsFile(outFolder+"/out.wav");
-		Log.i("SnipNote", "File created");
+		System.out.println("File created?");
 	}
 }
