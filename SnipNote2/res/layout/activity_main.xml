@@ -13,31 +13,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/snipnote"
+        android:textSize="30sp"
+        android:gravity="center"
         />    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:layout_alignParentBottom="true">
         <Button
             android:id="@+id/contactsButton" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/contacts"
+            android:text="Call"
             android:gravity="center_vertical"
             />
         <Button
-            android:id="@+id/keypadButton" 
+            android:id="@+id/TSButton" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/keypad"
+            android:text="@string/TS"
             android:gravity="center_vertical"/>
-        <Button
-            android:id="@+id/callSummaryButton" 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/callSummary"
-            android:gravity="center_vertical"/>
+
+
     </LinearLayout>
 </RelativeLayout>

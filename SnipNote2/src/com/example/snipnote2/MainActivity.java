@@ -1,5 +1,9 @@
 package com.example.snipnote2;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -14,14 +18,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-	private Button contactsButton,callSummaryButton;
+	private Button contactsButton,callSummaryButton, TSButton;
 	
 	private static final int REQUEST_CODE = 0;
     private DevicePolicyManager mDPM;
     private ComponentName mAdminName;
+    private DateFormat DF[]= new DateFormat[20];
+    private int pos = -1;    
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +41,8 @@ public class MainActivity extends ActionBarActivity {
 	    
 	    
 	    contactsButton = (Button)findViewById(R.id.contactsButton);
-	    callSummaryButton = (Button)findViewById(R.id.callSummaryButton);
+	    //callSummaryButton = (Button)findViewById(R.id.callSummaryButton);
+	    TSButton = (Button)findViewById(R.id.TSButton);
 	    
 	    contactsButton.setOnClickListener(new OnClickListener(){
 	    	public void onClick(View V){
@@ -43,12 +51,29 @@ public class MainActivity extends ActionBarActivity {
 	            startActivity(i); 
 	    	}
 	    });
-	    callSummaryButton.setOnClickListener(new OnClickListener(){
+	    
+	    
+	    TSButton.setOnClickListener(new OnClickListener(){
 	    	public void onClick(View V){
-	    		Intent intent2 = new Intent(MainActivity.this, CallSummary.class);
-                startActivity(intent2); 
+	    		try{
+	    			DateFormat df = DateFormat.getTimeInstance();
+	    			DF[++pos]=df;
+	    			Calendar c = Calendar.getInstance();
+	    		    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss"); 
+	    		    String formatted = sdf.format(c.getTime());
+	    			
+	    			//String ts1 = TS[pos]+"";
+		    		//Log.i("Logs","value is:"+ts1);
+		    		Toast.makeText(getApplicationContext(), "Timestamp Recorded at: "+formatted, Toast.LENGTH_LONG).show();
+	    		} catch(Exception e){
+	    			 e.printStackTrace();
+	    	         Log.i("Logs", "Timestamp error");
+	    		}
+	    
 	    	}
 	    });
+	    
+	    
 	    
 	    try {
             // Initiate DevicePolicyManager.
@@ -76,6 +101,8 @@ public class MainActivity extends ActionBarActivity {
 	
 	}
 
+
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 

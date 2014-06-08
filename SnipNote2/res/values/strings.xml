@@ -7,6 +7,7 @@
     <string name="snipnote">SnipNote</string>
     <string name="contacts">Contacts</string>
     <string name="keypad">Keypad</string>
+    <string name="TS">Timestamp</string>
     <string name="schedule">Schedule</string>
     <string name="callSummary">Call Summary</string>
     <string name="device_description">Disable the Force Stop button using Device Policy Manager API</string>

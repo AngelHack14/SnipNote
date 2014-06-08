@@ -1,16 +1,18 @@
 package com.example.snipnote2;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class CallSummary extends ListActivity {
 
@@ -24,6 +26,7 @@ public class CallSummary extends ListActivity {
     private static final int REQUEST_CODE_EDIT = 1;
     private static final int REQUEST_CODE_CHOOSE_CONTACT = 2;
 
+    private DateFormat DF[] = new DateFormat[20];
     // Context menu
     private static final int CMD_EDIT = 4;
     private static final int CMD_DELETE = 5;
@@ -37,6 +40,10 @@ public class CallSummary extends ListActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
      // Listview on item click listener
+        Intent i = getIntent();
+        Bundle b = i.getBundleExtra("TS");
+        //DF = b.getSerializable("DF");
+      //  DF=(DateFormat)i.getSerializableExtra("Timestamps");
         lv.setOnItemClickListener(new OnItemClickListener() {
         	
             @Override
@@ -50,6 +57,7 @@ public class CallSummary extends ListActivity {
  
             }
         });
+        
        
     }
 
