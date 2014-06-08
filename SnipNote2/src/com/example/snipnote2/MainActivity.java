@@ -1,20 +1,36 @@
 package com.example.snipnote2;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
+	private Button contactsButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 	    getActionBar().hide();
-		
+	    setContentView(R.layout.activity_main);
+	    
+	    contactsButton = (Button)findViewById(R.id.contactsButton);
+	    
+	    contactsButton.setOnClickListener(new OnClickListener(){
+	    	public void onClick(View V){
+	    		Uri uri = Uri.parse("tel:3393689972");
+	        	Intent i = new Intent(Intent.ACTION_CALL,uri);
+	            startActivity(i); 
+	    	}
+	    });
 	
 	}
 
