@@ -8,5 +8,7 @@
     <string name="contacts">Contacts</string>
     <string name="keypad">Keypad</string>
     <string name="schedule">Schedule</string>
+    <string name="title_activity_call_summary">CallSummary</string>
+    <string name="title_activity_snip_details">SnipDetails</string>
 
 </resources>
