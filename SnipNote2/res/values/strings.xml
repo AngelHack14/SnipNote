@@ -10,5 +10,6 @@
     <string name="schedule">Schedule</string>
     <string name="device_description">Disable the Force Stop button using Device Policy Manager API</string>
     <string name="device_admin_label">Snip Note Admin</string>
+    <string name="title_activity_notification_receiver">NotificationReceiver</string>
 
 </resources>
