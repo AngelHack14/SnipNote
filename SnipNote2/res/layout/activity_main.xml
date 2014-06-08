@@ -34,10 +34,10 @@
             android:text="@string/keypad"
             android:gravity="center_vertical"/>
         <Button
-            android:id="@+id/scheduleButton" 
+            android:id="@+id/callSummaryButton" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/schedule"
+            android:text="@string/callSummary"
             android:gravity="center_vertical"/>
     </LinearLayout>
 </RelativeLayout>

@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.snipnote2.SnipDetails$PlaceholderFragment" >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="1:00" />
+	    <Button
+	        android:id="@+id/shareButton" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Share"/>
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+		<Button
+			    android:id="@+id/playButton" 
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="Play"/> 
+	</LinearLayout>
+	<View 
+      android:layout_width="match_parent"
+      android:layout_height="10dip"/>
+  		<!-- Summary Label -->
+  		<ScrollView
+	      android:layout_width="match_parent"
+	      android:layout_height="wrap_content">
+	   	  <TextView android:id="@+id/summary_label"
+	      		android:layout_width="fill_parent"
+	      		android:layout_height="wrap_content"
+	      		android:text="FULL TRANSCRIBED TEXT"
+	      		/>
+    </ScrollView>
+
+</LinearLayout>

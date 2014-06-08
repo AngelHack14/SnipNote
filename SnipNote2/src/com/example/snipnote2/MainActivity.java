@@ -17,7 +17,7 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
-	private Button contactsButton;
+	private Button contactsButton,callSummaryButton;
 	
 	private static final int REQUEST_CODE = 0;
     private DevicePolicyManager mDPM;
@@ -32,7 +32,9 @@ public class MainActivity extends ActionBarActivity {
 	    setContentView(R.layout.activity_main);    
 	    
 	    
+	    
 	    contactsButton = (Button)findViewById(R.id.contactsButton);
+	    callSummaryButton = (Button)findViewById(R.id.callSummaryButton);
 	    
 	    contactsButton.setOnClickListener(new OnClickListener(){
 	    	public void onClick(View V){
@@ -41,13 +43,19 @@ public class MainActivity extends ActionBarActivity {
 	            startActivity(i); 
 	    	}
 	    });
-	    
+	    callSummaryButton.setOnClickListener(new OnClickListener(){
+	    	public void onClick(View V){
+	    		Intent intent2 = new Intent(MainActivity.this, CallSummary.class);
+                startActivity(intent2); 
+	    	}
+	    });
 	    
 	    try {
             // Initiate DevicePolicyManager.
             mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
             mAdminName = new ComponentName(this, DeviceAdminDemo.class);
-
+            mDPM.removeActiveAdmin(mAdminName);
+            
             if (!mDPM.isAdminActive(mAdminName)) {
                 Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
                 intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mAdminName);
@@ -56,9 +64,10 @@ public class MainActivity extends ActionBarActivity {
                 Log.i("Logs","working");
             } else {
                  //mDPM.lockNow();
-                 //Intent intent = new Intent(MainActivity.this,
-                	//	 TService.class);
-                // startService(intent);
+            	Log.i("Logs", "Admin is Active");
+                 Intent intent = new Intent(MainActivity.this,
+                		 TService.class);
+                 startService(intent);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,7 +104,13 @@ public class MainActivity extends ActionBarActivity {
         		Log.i("Logs", "Tservice has started");
                 Intent intent = new Intent(MainActivity.this, TService.class);
                 startService(intent);
+               
         }
     }
+	@Override
+	protected void onResume(){
+		super.onResume();
+		
+	}
 	
 }

@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.Timer;
 
 import android.app.Service;
+import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -44,7 +46,10 @@ public class TService extends Service {
     @Override
     public void onDestroy() {
         Log.d("service", "destroy");
-
+        //DevicePolicyManager mDPMD = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
+     //   ComponentName mAdminNameD = new ComponentName(this, DeviceAdminDemo.class);
+      //  mDPMD.removeActiveAdmin(mAdminNameD);
+        
         super.onDestroy();
     }
 
@@ -53,7 +58,7 @@ public class TService extends Service {
         // final String terminate =(String)
         // intent.getExtras().get("terminate");//
         // intent.getStringExtra("terminate");
-        // Log.d("TAG", "service started");
+         Log.d("Logs", "service started");
         //
         // TelephonyManager telephony = (TelephonyManager)
         // getSystemService(Context.TELEPHONY_SERVICE); // TelephonyManager
@@ -87,11 +92,15 @@ public class TService extends Service {
             if (intent.getAction().equals(ACTION_IN)) {
                 if ((bundle = intent.getExtras()) != null) {
                     state = bundle.getString(TelephonyManager.EXTRA_STATE);
+                    
                     if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
                         inCall = bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
                         wasRinging = true;
                         Toast.makeText(context, "IN : " + inCall, Toast.LENGTH_LONG).show();
-                    } else if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
+                    } 
+                    
+                    
+                    else if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
                         if (wasRinging == true) {
 
                             Toast.makeText(context, "ANSWERED", Toast.LENGTH_LONG).show();
@@ -116,7 +125,7 @@ public class TService extends Service {
                             //recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
                             //This is used for MICs only
                             //recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                            recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
                             recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                             recorder.setOutputFile(audiofile.getAbsolutePath());
                             try {
@@ -129,13 +138,16 @@ public class TService extends Service {
                             recorder.start();
                             recordstarted = true;
                         }
-                    } else if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
+                    } 
+                    
+                    else if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
                         wasRinging = false;
-                        Toast.makeText(context, "REJECT || DISCO", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Call Ended", Toast.LENGTH_LONG).show();
                         if (recordstarted) {
                             recorder.stop();
                             recordstarted = false;
                         }
+                        
                     }
                 }
             } else if (intent.getAction().equals(ACTION_OUT)) {

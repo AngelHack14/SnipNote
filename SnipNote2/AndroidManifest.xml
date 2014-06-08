@@ -49,7 +49,10 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED" />
             </intent-filter>
         </receiver>
-
+		<activity
+           android:name="com.example.snipnote2.CallSummary"
+           android:label="CallSummary" >
+       </activity>
 		<service android:name=".TService" >
         </service>
         
