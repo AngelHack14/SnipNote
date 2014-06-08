@@ -1,23 +1,49 @@
 package com.example.snipnote2;
 
+<<<<<<< HEAD
+=======
+import android.content.Intent;
+import android.net.Uri;
+>>>>>>> branch 'master' of https://github.com/AngelHack14/SnipNote.git
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+=======
+import android.support.v7.app.ActionBarActivity;
+>>>>>>> branch 'master' of https://github.com/AngelHack14/SnipNote.git
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
 import android.view.ViewGroup;
+=======
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+>>>>>>> branch 'master' of https://github.com/AngelHack14/SnipNote.git
 
 public class MainActivity extends ActionBarActivity {
 
+	private Button contactsButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
 		
-		WaveDemo demo = new WaveDemo();
-		
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+	    getActionBar().hide();
+	    setContentView(R.layout.activity_main);
+	    
+	    contactsButton = (Button)findViewById(R.id.contactsButton);
+	    
+	    contactsButton.setOnClickListener(new OnClickListener(){
+	    	public void onClick(View V){
+	    		Uri uri = Uri.parse("tel:3393689972");
+	        	Intent i = new Intent(Intent.ACTION_CALL,uri);
+	            startActivity(i); 
+	    	}
+	    });
 	
 	}
 
