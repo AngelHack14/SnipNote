@@ -1,4 +1,6 @@
 SnipNote
 ========
 
-Snippy snip snap
+**Work in Progress**
+
+Android app for taking voice notes during calls. 
